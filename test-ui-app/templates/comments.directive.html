@@ -1,0 +1,14 @@
+<div class="comments" ng-controller="CommentsCtrl as commentsCtrl">
+    <div class="comments-header">Comments #{{overviewCtrl.items.indexOf(overviewCtrl.selectedItem)+1}}</div>
+    <div class="comment-row" ng-repeat="comment in overviewCtrl.selectedItem.comments track by $index">
+        <div class="comment-img"></div>
+        <div class="comment">{{ comment.commentContent }}</div>
+    </div>
+    <div class="input-comment-row">
+            <textarea rows="5" ng-model='commentsCtrl.newComment.commentContent' type='text'
+                      placeholder="Type comment here..." required></textarea>
+        <button ng-click='commentsCtrl.createItemComment(overviewCtrl.selectedItem, commentsCtrl.newComment); commentsCtrl.newComment=null'
+                ng-disabled='!commentsCtrl.newComment.commentContent'>Add new
+        </button>
+    </div>
+</div>

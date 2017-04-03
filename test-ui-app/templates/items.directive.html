@@ -1,0 +1,20 @@
+<div class="items" ng-controller="ItemsCtrl as itemsCtrl">
+    <form novalidate role='form'>
+        <label for="new-item-name">Items</label>
+
+        <div class="input-item-row">
+            <input id="new-item-name" ng-model='itemsCtrl.newItem.itemName' type='text'
+                   placeholder="Type name here..." required>
+            <button ng-click='itemsCtrl.createItem(itemsCtrl.newItem); itemsCtrl.newItem=null'
+                    ng-disabled='!itemsCtrl.newItem.itemName'>Add new
+            </button>
+        </div>
+    </form>
+    <div class="item" ng-repeat="item in overviewCtrl.items track by $index"
+         ng-click="overviewCtrl.selectedItem = item" ng-class="{'active-item' : overviewCtrl.selectedItem === item}">
+        <span class="item-name">{{ item.itemName | limitTo:50 }}</span><span class="item-comments-number">{{item.comments.length}}</span>
+        <button ng-click='itemsCtrl.deleteItem(item)'>
+            Delete
+        </button>
+    </div>
+</div>

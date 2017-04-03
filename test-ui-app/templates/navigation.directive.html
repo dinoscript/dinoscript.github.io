@@ -1,0 +1,14 @@
+<nav class="nav" ng-controller="NavCtrl as navCtrl">
+    <ul ng-repeat="navItem in navCtrl.navItems">
+        <li class="nav-item" ng-class="{'active-nav-item' : navCtrl.activeNavItem === navItem}"><a
+                ng-click="navCtrl.setActive(navItem)"
+                ng-href="{{navItem.navItemHref}}">{{navItem.navItemName}}</a></li>
+        <ul>
+            <li class="nav-subitem" ng-repeat='navSubItem in navItem.navSubItems'
+                ng-class="{'active-nav-item' : navCtrl.activeNavItem === navSubItem}"><a
+                    ng-click="navCtrl.setActive(navSubItem)"
+                    ng-href="{{navSubItem.navSubItemHref}}">{{navSubItem.navSubItemName}}</a>
+            </li>
+        </ul>
+    </ul>
+</nav>
