@@ -1,0 +1,36 @@
+[
+  {
+    "itemName": "First item with custom name",
+    "comments": [
+      {
+        "commentContent": "Item#1, Comment#1. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      },
+      {
+        "commentContent": "Item#1, Comment#2. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      },
+      {
+        "commentContent": "Item#1, Comment#3. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      },
+      {
+        "commentContent": "Item#1, Comment#4. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      },
+      {
+        "commentContent": "Item#1, Comment#5. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      }
+    ]
+  },
+  {
+    "itemName": "Second item is active",
+    "comments": [
+      {
+        "commentContent": "Item#2, Comment#1. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      },
+      {
+        "commentContent": "Item#2, Comment#2. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      },
+      {
+        "commentContent": "Item#3, Comment#3. A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s"
+      }
+    ]
+  }
+]
