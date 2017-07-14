@@ -9,12 +9,21 @@ body {
     overflow: hidden;
 }
 
-h2 {
-    font-size: 30px;
+.projects-title {
+    color: #27aa15;
+    font-size: 50px;
 }
 
-a {
-    font-size: 25px;
+.project {
+    color: #aa1f0e;
+    font-size: 35px;
+}
+.technologies {
+    font-size: 20px;
+}
+.project-links {
+    font-size: 20px;
+    margin-right: 30px;
 }
 
 .projects {
@@ -24,4 +33,5 @@ a {
 
 .projects li {
     margin: 20px;
+    list-style: square;
 }
