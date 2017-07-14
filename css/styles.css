@@ -1,17 +1,65 @@
+/*
 * {
     font-family: 'Dosis', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}*/
+
+.projects-row {
 }
 
-body {
+.dino-img {
+    width: 100px;
+}
+
+.projects-title {
+    color: #27aa15;
+    font-size: 39px;
+}
+
+.project {
+    margin-bottom: 30px;
     overflow: hidden;
+    color: #aa1f0e;
+    font-size: 30px;
+}
+
+.technologies {
+    font-size: 18px;
+    color: #000;
+}
+.project-links {
+    font-size: 18px;
+}
+
+.projects {
+    text-align: left;
+    padding: 50px;
+}
+
+.projects li {
+    list-style: none;
+}
+/*
+body {
+    overflow: scroll;
+}
+
+.projects-row {
+    margin: auto;
+}
+
+.dino-img {
+    width: 100px;
+    vertical-align: middle;
+    line-height: 50px;
 }
 
 .projects-title {
     color: #27aa15;
     font-size: 50px;
+    display: inline-block;
 }
 
 .project {
@@ -32,6 +80,9 @@ body {
 }
 
 .projects li {
-    margin: 20px;
+    margin-top: 39px ;
+    margin-bottom: 39px ;
+    margin-left: 100px ;
     list-style: square;
 }
+*/
