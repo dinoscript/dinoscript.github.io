@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <p>
+                This example shows how to bind to a <code>input</code> field with a "checkbox" type.
+            </p>
+
+            <div id="growler">
+                <div class="form-check row">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" v-model="isPowerSyntaxEnabled">
+                    </label>
+                </div>
+                <br />
+
+                <small class="text-muted">selected: {{ isPowerSyntaxEnabled }}</small>                
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    appName: 'Growler',
+                    isPowerSyntaxEnabled: false
+                }
+            });        
+        </script>
+    </body>
+</html>

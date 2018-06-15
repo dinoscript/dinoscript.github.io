@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <form class="form-horizontal">
+                    <p>
+                        This example demonstrates the <code>stop</code> modifier applied on an ancestor.
+                    </p>
+
+                    <div v-on:click="grandparentClick">
+                        <div class="form-group" v-on:click.stop="parentClick">
+                            <button v-on:click="executeSearch" type="button" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <label for="logTextarea">Event Log</label>
+                        <textarea class="form-control" v-model="history" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    query: '',
+                    history: ''
+                },
+
+                methods: {
+                    executeSearch: function() {
+                        this.history += 'Search button clicked.\n';
+                    },
+
+                    parentClick: function() {
+                        this.history += 'Search button parent clicked.\n';
+                    },
+
+                    grandparentClick: function() {
+                        this.history += 'Search button grandparent clicked.\n';
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+
+        <style type="text/css">
+            .event-block {
+                border-width: 1px;
+                border-style: solid;
+                padding:3rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+
+            <div id="growler">                
+                <form style="width:100%;">
+                    <p>
+                        This example shows how to use mouse modifiers on events.
+                    </p>
+
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <div class="event-block text-center" style="border-color:green;" v-on:click="onAnyClick">
+                                Click in this area with any mouse button.
+                            </div>
+                        </div>                        
+                    </div>
+                    <br />                    
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <div class="event-block text-center" style="border-color: green;" v-on:click.left="leftBlockClick">
+                                Click in this area with the left mouse button.
+                            </div>
+                        </div>
+                        
+                        <div class="col-4">
+                            <div class="event-block text-center" style="border-color: green;" v-on:click.middle="middleBlockClick">
+                                Click in this area with the middle mouse button.
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="event-block text-center" style="border-color: green;" v-on:contextmenu.prevent="rightBlockClick">
+                                Click in this area with the right mouse button.
+                            </div>
+                        </div>                        
+                    </div>                        
+
+                    <br />
+                    <div class="form-group">
+                        <label for="logTextarea">Event Log (<a href="#" v-on:click="clearHistory">clear</a>)</label>
+                        <textarea class="form-control" v-model="history" rows="15"></textarea>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    query: '',
+                    history: ''
+                },
+
+                methods: {
+                    onAnyClick: function(e) {
+                        if (e instanceof MouseEvent) {
+                            this.logMouseEvent(e);
+                        } else {
+                            this.history += 'The click event did not come from the mouse.';
+                        }
+                    },
+
+                    leftBlockClick: function(e) {
+                        this.logMouseEvent(e);
+                    },
+
+                    middleBlockClick: function(e) {
+                        this.logMouseEvent(e);
+                    },
+
+                    rightBlockClick: function(e) {
+                        this.logMouseEvent(e);
+                    },
+
+                    logMouseEvent: function(e) {
+                        var button = 'Unknown';
+                        if (e.button === 0) {
+                            button = 'Left';
+                        } else if (e.button === 1) {
+                            button = 'Middle';
+                        } else if (e.button === 2) {
+                            button = 'Right';
+                        }
+
+                        console.log(e);
+                        this.history += 'Mouse click happened: ' + button + ' button clicked.\n';
+                    },
+
+                    clearHistory: function() {
+                        this.history = '';
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+        <style type="text/css">
+            .grandparent {
+                background-color:#909090;
+                padding:2.0rem;
+            }
+
+            .parent {
+                background-color:#D8D8D8;
+                padding:2.0rem;
+            }
+        </style>        
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <form class="form-horizontal">
+                    <p>
+                        This example demonstrates chaining modifiers together.
+                        You can witness it by clicking the parent element.
+                    </p>
+
+                    <div class="grandparent" v-on:click="grandparentClick">
+                        <div class="form-group parent" v-on:click.stop.self="parentClick">
+                            <button v-on:click="executeSearch" type="button" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <label for="logTextarea">Event Log (<a href="#" v-on:click="clearHistory">clear</a>)</label>
+                        <textarea class="form-control" v-model="history" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    query: '',
+                    history: ''
+                },
+
+                methods: {
+                    executeSearch: function() {
+                        this.history += 'Search button clicked.\n';
+                    },
+
+                    parentClick: function() {
+                        this.history += 'Search button parent clicked.\n';
+                    },
+
+                    grandparentClick: function() {
+                        this.history += 'Search button grandparent clicked.\n\n';
+                    },
+
+                    clearHistory: function() {
+                        this.history = '';
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

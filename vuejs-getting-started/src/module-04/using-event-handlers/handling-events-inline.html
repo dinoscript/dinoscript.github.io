@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <form class="form-horizontal">
+                    <p>
+                        [Explanation goes here]
+                    </p>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input v-model.trim="query" type="search" class="form-control" placeholder="please enter your query here.">
+                            <button v-on:click="alert('hi')" type="button" class="btn btn-primary">Search</button>                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    query: ''
+                },
+
+                methods: {
+                    executeNewSearch: function(msg) {
+                        alert(msg);
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <form class="form-horizontal">
+                    <p>
+                        This example is intended to be used to demonstrate the propagation behavior of the <code>once</code> modifier.
+                    </p>
+
+                        <div class="form-group">
+                            <input class="form-control" type="search" v-model="query" v-bind:disabled="isRunning" autofocus />
+                            <div v-on:click="buttonGrandparentClick">                            
+                                <div v-on:click="buttonParentClick">
+                                    <button type="button" v-on:click.once="executeSearch" v-bind:disabled="isRunning" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    <br />
+                    <div class="form-group">
+                        <label for="logTextarea">Event Log</label>
+                        <textarea class="form-control" v-model="history" rows="15"></textarea>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    query: '',
+                    history: ''
+                },
+
+                methods: {
+                    executeSearch: function() {
+                        this.history += 'Search button clicked. Query "' + this.query + '" was entered.\n';
+                    },
+
+                    buttonParentClick: function() {
+                        this.history += 'Search button parent clicked.\n';
+                    },
+
+                    buttonGrandparentClick: function() {
+                        this.history += 'Search button grandparent clicked.\n\n';
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

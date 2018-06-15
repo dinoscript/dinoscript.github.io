@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="app">            
+                <form>
+                    <p>
+                        An example of the <code>trim</code> modifier. 
+                        The leading and trailing "|" is used to show that a trim is happening
+                    </p>
+                    <div class="form-group">
+                        <label for="searchInputField" class="form-label">search</label>
+                        <input v-model.trim="query" placeholder="Search..." id="searchInputField" type="search" class="form-control">
+                        
+                        <!-- The leading and trailing "|" is used to show that a trim is happening -->
+                        <small class="text-muted"><b>|</b>{{ query }}<b>|</b></small>                            
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    query: ''
+                }
+            });        
+        </script>
+    </body>
+</html>

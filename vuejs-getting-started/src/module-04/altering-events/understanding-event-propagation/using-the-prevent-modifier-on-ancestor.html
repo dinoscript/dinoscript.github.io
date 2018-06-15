@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <p>
+                    This example shows how the <code>prevent</code> modifier behaves when applied on an ancestor element.
+                </p>
+                
+                <form action="#" method="GET" class="form-horizontal">
+                    <div class="form-group" v-on:click.prevent="buttonParentClick">
+                        <input class="form-control" v-model="query" id="query" name="query" />
+                        <button v-on:click.prevent="executeSearch" type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    query: ''
+                },
+
+                methods: {
+                    executeSearch: function() {
+                        alert('Search click');
+                    },
+
+                    buttonParentClick: function() {
+                        alert('Parent click');
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

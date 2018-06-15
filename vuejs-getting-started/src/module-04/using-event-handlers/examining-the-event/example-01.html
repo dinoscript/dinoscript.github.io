@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+
+            <p>This example shows how to attach to an event. Specifically, this example shows the definition of an event handler.</p>
+
+            <div id="growler">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input v-model.trim="query" type="search" class="form-control" placeholder="Search...">
+                            <button v-on:click="executeSearch" type="button" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    query: ''
+                },
+                methods: {
+                    executeSearch: function(event) {
+                        alert('Query: "' + this.query +  '" Button:"' + event.target.innerText + '"');                        
+                    }
+                }                
+            });        
+        </script>
+    </body>
+</html>

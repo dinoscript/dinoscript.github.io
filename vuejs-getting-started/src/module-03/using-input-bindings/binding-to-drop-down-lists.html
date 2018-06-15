@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <form>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 col-lg-4">
+                            <strong>Binding to a Single Selection</strong>
+                            <br />
+
+                            <select v-model="selectedSearchIndex" class="form-control">
+                                <option value="beers">Beers</option>
+                                <option value="breweries">Breweries</option>
+                                <option value="distilleries">Distilleries</option>
+                                <option value="pubs">Pubs</option>
+                            </select>
+                            <small class="text-muted">selected: {{ selectedSearchIndex }}</small>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 col-lg-4">
+                            <strong>Binding to Multiple Selections</strong>
+                            <br />
+
+                            <select v-model="selectedSearchIndexes" multiple class="form-control">
+                                <option value="beers">Beers</option>
+                                <option value="breweries">Breweries</option>
+                                <option value="distilleries">Distilleries</option>
+                                <option value="pubs">Pubs</option>
+                            </select>
+                            <small class="text-muted">selected: {{ selectedSearchIndexes }}</small>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    selectedSearchIndex: 'beers',
+                    selectedSearchIndexes: ['beers', 'pubs']                    
+                }
+            });        
+        </script>
+    </body>
+</html>
