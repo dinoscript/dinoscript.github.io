@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+
+            <p>This example shows how to use <code>sort</code> function on an array of numbers.</p>
+
+            <div id="growler">
+                <form style="width:100%;">
+                    <div class="row">
+                        <div class="col-2">
+                            <ul class="list-unstyled">
+                                <li><strong>Alcohol by Volumes (ABV)</strong></li>
+                                <li v-for="beer in abv">{{ beer }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="col-1">
+                            <button type="button" class="btn btn-secondary" v-on:click="sortClick">Sort</button>
+                        </div>
+
+                        <div class="col-2">
+                            <ul class="list-unstyled" v-if="sortedAbv.length > 0">
+                                <li><strong>Default Sort</strong></li>
+                                <li v-for="beer in sortedAbv">{{ beer }}</li>
+                            </ul>                            
+                        </div>
+
+                        <div class="col-1">
+                            <button type="button" class="btn btn-secondary" v-on:click="numericallySortClick" v-if="sortedAbv.length > 0">Sort</button>                            
+                        </div>
+
+                        <div class="col-2">
+                            <ul class="list-unstyled" v-if="numericallySortedAbv.length > 0">
+                                <li><strong>Numeric Sort</strong></li>
+                                <li v-for="beer in numericallySortedAbv">{{ beer }}</li>
+                            </ul>                                                        
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    abv: [
+                        9.7,
+                        12.2,
+                        5.7,
+                        11.1,
+                        2.9
+                    ],
+
+                    sortedAbv: [],
+
+                    numericallySortedAbv: []
+                },
+                methods: {
+                    sortClick: function() {
+                        this.sortedAbv = this.abv.slice();
+                        this.sortedAbv.sort();                        
+                    },
+
+                    numericallySortClick: function() {
+                        this.numericallySortedBeers = this.abv.slice();
+                        this.numericallySortedAbv.sort(function(v1, v2) {
+                            return v1 - v2;
+                        });
+                    }
+                }                
+            });        
+        </script>
+    </body>
+</html>

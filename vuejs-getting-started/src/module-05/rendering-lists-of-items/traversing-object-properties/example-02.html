@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+
+            <div id="growler">
+                <form style="width:100%;">
+                    <p>
+                        This example shows how to use the <code>v-for</code> directive to traverse object properties.
+                    </p>
+
+                    <nav>
+                        <ul>
+                            <li v-for="(v, k) in currentUser">{{ k }} - {{ v }}</li>
+                        </ul>
+                    </nav>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    currentUser: {
+                        firstName: 'Chad',
+                        lastName: 'Campbell',
+                        fingers: 10,
+
+                        socialMedia: {
+                            twitter: '@ecofic',
+                            youtube: 'https://www.youtube.com/c/ecofic'
+                        },
+
+                        tags: [ 'male', 'scorpio' ]
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

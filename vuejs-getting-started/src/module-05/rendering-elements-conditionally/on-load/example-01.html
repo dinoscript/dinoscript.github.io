@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+
+        <style type="text/css">
+            .event-block {
+                border-width: 1px;
+                border-style: solid;
+                padding:3rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+
+            <div id="growler">
+                <form style="width:100%;">
+                    <p>
+                        This example shows how to use the <code>v-cloak</code> directive.
+                    </p>
+
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="logTextarea">Event Log (without <code>v-cloak</code>)</label>
+                            <div style="border:solid 1px #000; height:100px; padding-left:1rem;">
+                                <div>{{ history }}</div>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="logTextarea">Event Log (with <code>v-cloak</code>)</label>
+                            <div style="border:solid 1px #000; height:100px; padding-left:1rem;">
+                                <div v-cloak>{{ history }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            setTimeout(initializeGrowler, 3000);
+
+            function initializeGrowler() {
+                var growler = new Vue({
+                    el: '#growler',
+                    data: {
+                        history: ''
+                    },
+
+                    created: function() {
+                        this.history = 'Growler created!';
+                    }
+                });        
+            }
+        </script>
+    </body>
+</html>

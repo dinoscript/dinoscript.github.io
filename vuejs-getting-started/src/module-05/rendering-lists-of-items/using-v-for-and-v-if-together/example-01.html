@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+
+            <p>This example shows how to use <code>v-for</code> and <code>v-if</code> together.</p>
+            <div id="growler">
+                <form style="width:100%;">
+                    <div class="form-group">
+                        <label data-toggle="tooltip" data-placement="left" title="This demonstrates a query duration."><strong>Max Alcohol by Volume (a.b.v.)</strong></label>
+                        <p style="margin-bottom:0;"><input class="form-control" min="0" max="100" v-model="maxAbv" type="range" /></p>
+                        <small class="text-muted">{{ maxAbv }}%</small>
+                    </div>
+                    
+                    <ul class="list-unstyled">
+                        <li><strong>Beers</strong></li>
+                        <li v-for="beer in beers" v-if="beer.abv < maxAbv">{{ beer }}</li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    beers: [
+                        { name: 'Tikibalang Barley Wine', abv:9.6 },
+                        { name: 'Hyote Chocolate Stout', abv:7.4 },
+                        { name: 'Pope Lick Porter', abv:6.5 },
+                        { name: 'Ahool Ale', abv:5.4 },
+                        { name: 'North Adjule Lager', abv:3.7 }                                                
+                    ],
+                    maxAbv:7.0
+                }
+            });        
+        </script>
+    </body>
+</html>
