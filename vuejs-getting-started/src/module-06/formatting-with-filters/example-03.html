@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="/public/css/app.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+
+            <div id="growler">
+                <form style="width:100%;">
+                    <p>
+                        This example shows how to call filters programmatically. Click the "Load Items" button.
+                    </p>
+
+                    <div v-for="result in results">
+                        <div>{{ result.name }}</div>
+                        <small class="text-muted">{{ result.ibu | convertIBU('--') }}</small>
+                    </div>
+
+                    <br />
+                    <button class="btn btn-default" v-on:click.prevent="applyFilters">Apply Filters</button>
+                </form>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    results: [
+                        { name: 'Ahool Ale', ibu: '33 i.b.u.' },
+                        { name: 'Agogwe Ale', ibu: null },
+                        { name: 'Aswang Ale', ibu: '31 i.b.u.' }
+                    ]
+                },
+
+                filters: {
+                    convertIBU: function(value, empty) {
+                        if (!value) {
+                            return empty;
+                        }
+
+                        value = value.toString();                        
+                        if (this.growler) {
+                            value = this.growler.$options.filters.removePeriods(value);
+                            value = this.growler.$options.filters.toUpperCase(value);
+                        }
+                        return value;
+                    },
+
+                    removePeriods: function(value) {
+                        return value.replace(/\./g, '');               
+                    },
+
+                    toUpperCase: function(value) {
+                        return value.toUpperCase();
+                    }
+                },
+
+                methods: {
+                    applyFilters: function () {
+                        var item = this.results[0];
+                        Vue.set(this.results, 0, item);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

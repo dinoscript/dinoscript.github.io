@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <p>An example of a computed property.</p>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr v-for="item in items">
+                            <td>{{ item.name }}</td>
+                            <td>${{ item.price }}</td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td>Subtotal</td>
+                            <td>${{ subTotal }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Sales Tax</td>
+                            <td>{{ salesTax }}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Grand Total</td>
+                            <td>${{ grandTotal }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <button class="btn btn-primary" v-on:click="generatePrices">Generate Random Prices</button>
+                <button class="btn btn-seconary" v-on:click="generateNewTaxRate">Generate Random Tax Rate</button>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.min.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    items: [
+                        { name: 'Milk', price: 3.52 },
+                        { name: 'Eggs', price: 1.86 }                        
+                    ],
+                    subTotal: 0.00,                    
+                    salesTax: 0.07
+                },
+                watch: {
+                    items: function() {
+                        console.log('responding to item change.');
+                        var t = 0;
+                        for (var i=0; i<this.items.length; i++) {
+                            t = t + this.items[i].price;
+                        }
+                        this.subTotal = t;
+                    }
+                },
+                computed: {
+                    grandTotal: function() {
+                        return this.subTotal * this.salesTax;
+                    }
+                },
+                methods: {
+                    generatePrices: function() {
+                        for (var i=0; i<this.items.length; i++) {
+                            var dollars = Math.floor((Math.random() * 3) + 1);                  // Get a random value between 1 and 3
+                            var cents = Math.floor((Math.random() * 99)) / 100;                 // Get a random value between 0 and 99
+
+                            var item = this.items[i];
+                            item.price = (dollars + cents).toFixed(2);
+                            Vue.set(this.items, i, item);                                       // Overcome limitations of JavaScript. Ensure Vue is aware of the change in data
+                        }
+                    },
+
+                    generateNewTaxRate: function() {
+                        var newTaxRate = Math.floor((Math.random() * 10)) / 100;                 // Get a random value between 0 and 10                        
+                        this.salesTax = newTaxRate;
+                    }
+                }
+            });        
+        </script>
+    </body>
+</html>

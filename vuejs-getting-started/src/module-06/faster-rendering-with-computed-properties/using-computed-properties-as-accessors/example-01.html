@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div class="container">
+            <br />
+            <div id="growler">            
+                <p>An example of a computed property.</p>
+                <div>Online? {{ isOnline }}</div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.2/axios.min.js" type="text/javascript"></script>
+        <script src="https://unpkg.com/vue@2.2.5/dist/vue.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    canConnect: false
+                },
+                computed: {
+                    isOnline: {
+                        get: function () {
+                            return this.canConnect ? 'Yes' : 'No';                            
+                        }
+                    }
+                },
+                created: function() {
+                    axios.get('https://www.ecofic.com')
+                        .then(function (res) {
+                            growler.canConnect = true;
+                        })
+                        .catch(function (err) {
+                            growler.canConnect = false;
+                        })
+                    ;
+                }
+            });        
+        </script>
+    </body>
+</html>
